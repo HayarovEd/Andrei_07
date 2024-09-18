@@ -6,11 +6,20 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,6 +39,7 @@ import com.shesound.sapppowertools.domain.model.Tool
 import com.shesound.sapppowertools.domain.utils.tools
 import com.shesound.sapppowertools.ui.state.MainEvent
 import com.shesound.sapppowertools.ui.theme.black
+import com.shesound.sapppowertools.ui.theme.red
 import com.shesound.sapppowertools.ui.theme.white
 
 @Preview(name = "NEXUS_7", device = Devices.NEXUS_7)
@@ -75,6 +85,22 @@ fun ToolsScreen(
                 .padding(start = 20.dp, end = 20.dp, top = 35.dp, bottom = 50.dp)
                 .fillMaxWidth()
         ) {
+            Button(
+                modifier = modifier
+                    .padding(end = 10.dp, bottom = 10.dp),
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = red
+                ),
+                contentPadding = PaddingValues(10.dp),
+                onClick = {  onEvent(MainEvent.OnChangeAppState(AppState.Start)) }
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "",
+                    tint = white
+                )
+            }
             Text(
                 modifier = modifier,
                 text = stringResource(R.string.power_tool_sound),
@@ -85,6 +111,7 @@ fun ToolsScreen(
                     color = white,
                 )
             )
+            Spacer(modifier = modifier.height(15.dp))
             LazyColumn(
                 modifier = modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(15.dp)

@@ -5,14 +5,18 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -79,63 +83,83 @@ fun CurrentToolScreen(
             contentDescription = "",
             contentScale = ContentScale.FillBounds
         )
-        Box(
+        Column (
             modifier = modifier
-                .align(alignment = Alignment.Center)
+                .align(alignment = Alignment.TopCenter)
                 .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp, top = 35.dp, bottom = 50.dp)
-        ) {
-            Image(
-                modifier = modifier
-                    .align(alignment = Alignment.Center)
-                    .fillMaxHeight()
-                    .onGloballyPositioned { coordinates ->
-                        cellHeightDp.value =
-                            with(localDensity) { coordinates.size.height.toDp() }
-                    },
-                painter = painterResource(tool.fullImage),
-                contentDescription = "",
-                contentScale = ContentScale.FillHeight
-            )
-            Text(
-                modifier = modifier
-                    .align(alignment = Alignment.TopCenter)
-                    .fillMaxWidth()
-                    .padding(top = 15.dp),
-                text = stringResource(R.string.power_tool_sound),
-                style = TextStyle(
-                    fontSize = 22.sp,
-                    //fontFamily = FontFamily(Font(R.font.MTS Sans)),
-                    fontWeight = FontWeight(600),
-                    color = white,
-                    textAlign = TextAlign.Center
-                )
-            )
+                .padding(start = 20.dp, end = 20.dp, top = 55.dp, bottom = 50.dp)
+        ){
             Button(
-                modifier = modifier
-                    .align(alignment = Alignment.BottomCenter)
-                    .padding(bottom = cellHeightDp.value/7),
-                shape = RoundedCornerShape(100.dp),
-                border = BorderStroke(
-                    width = 2.dp,
-                    color = yellow
-                ),
+                modifier = modifier,
+                shape = RoundedCornerShape(10.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = red
                 ),
-                contentPadding = PaddingValues(20.dp),
+                contentPadding = PaddingValues(10.dp),
                 onClick = onClick
             ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "",
+                    tint = white
+                )
+            }
+            Box(
+                modifier = modifier
+                    .fillMaxWidth()
+            ) {
+                Image(
+                    modifier = modifier
+                        .align(alignment = Alignment.Center)
+                        .fillMaxHeight()
+                        .onGloballyPositioned { coordinates ->
+                            cellHeightDp.value =
+                                with(localDensity) { coordinates.size.height.toDp() }
+                        },
+                    painter = painterResource(tool.fullImage),
+                    contentDescription = "",
+                    contentScale = ContentScale.FillHeight
+                )
                 Text(
-                    modifier = modifier,
-                    text = stringResource(R.string.start_stop),
+                    modifier = modifier
+                        .align(alignment = Alignment.TopCenter)
+                        .fillMaxWidth()
+                        .padding(top = 15.dp),
+                    text = stringResource(R.string.power_tool_sound),
                     style = TextStyle(
-                        fontSize = 25.sp,
+                        fontSize = 22.sp,
                         //fontFamily = FontFamily(Font(R.font.MTS Sans)),
                         fontWeight = FontWeight(600),
                         color = white,
+                        textAlign = TextAlign.Center
                     )
                 )
+                Button(
+                    modifier = modifier
+                        .align(alignment = Alignment.BottomCenter)
+                        .padding(bottom = cellHeightDp.value/7),
+                    shape = RoundedCornerShape(100.dp),
+                    border = BorderStroke(
+                        width = 2.dp,
+                        color = yellow
+                    ),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = red
+                    ),
+                    contentPadding = PaddingValues(20.dp),
+                    onClick = onClick
+                ) {
+                    Text(
+                        modifier = modifier,
+                        text = stringResource(R.string.start_stop),
+                        style = TextStyle(
+                            fontSize = 25.sp,
+                            //fontFamily = FontFamily(Font(R.font.MTS Sans)),
+                            fontWeight = FontWeight(600),
+                            color = white,
+                        )
+                    )
+                }
             }
         }
     }
