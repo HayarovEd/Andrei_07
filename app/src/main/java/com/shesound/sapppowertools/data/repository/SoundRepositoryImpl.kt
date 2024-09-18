@@ -1,22 +1,30 @@
 package com.shesound.sapppowertools.data.repository
 
 import android.app.Application
-import android.media.SoundPool
+import android.media.MediaPlayer
 import com.shesound.sapppowertools.domain.repository.SoundRepository
 import javax.inject.Inject
 
 class SoundRepositoryImpl
 @Inject constructor(
     private val application: Application,
-    private val soundPool: SoundPool
 ): SoundRepository {
 
+    private var mediaPlayer: MediaPlayer? = null
     override fun playSound(soundId: Int) {
-        soundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
+        if (mediaPlayer!=null&& mediaPlayer!!.isPlaying) {
+           stopSound()
+        } else {
+            mediaPlayer?.stop()
+            mediaPlayer?.release()
+            mediaPlayer = MediaPlayer.create(application, soundId)
+            mediaPlayer?.start()
+        }
     }
 
     override fun stopSound() {
-        soundPool.release()
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
-
 }

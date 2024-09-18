@@ -24,6 +24,7 @@ class MainViewModel @Inject constructor(
                     appState = event.appState
                 )
                     .updateStateUI()
+                soundRepository.stopSound()
             }
 
             is MainEvent.PlaySound -> {
