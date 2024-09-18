@@ -87,7 +87,7 @@ fun CurrentToolScreen(
             modifier = modifier
                 .align(alignment = Alignment.TopCenter)
                 .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp, top = 55.dp, bottom = 50.dp)
+                .padding(start = 20.dp, end = 20.dp, top = 35.dp, bottom = 50.dp)
         ){
             Button(
                 modifier = modifier,
@@ -96,7 +96,7 @@ fun CurrentToolScreen(
                     containerColor = red
                 ),
                 contentPadding = PaddingValues(10.dp),
-                onClick = onClick
+                onClick = onBackClick
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,

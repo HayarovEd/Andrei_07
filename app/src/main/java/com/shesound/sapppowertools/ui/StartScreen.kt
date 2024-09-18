@@ -6,8 +6,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -64,6 +66,15 @@ fun StartScreen(
             painter = painterResource(R.drawable.start_bg),
             contentDescription = "",
             contentScale = ContentScale.FillWidth
+        )
+        Image(
+            modifier = modifier
+                .align(alignment = Alignment.TopCenter)
+                .fillMaxHeight()
+                .padding(start = 20.dp, end = 20.dp, top = 35.dp, bottom = 50.dp),
+            painter = painterResource(R.drawable.front_start),
+            contentDescription = "",
+            contentScale = ContentScale.FillHeight
         )
         Button(
             shape = RoundedCornerShape(100.dp),

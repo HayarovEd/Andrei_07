@@ -16,6 +16,7 @@ fun BaseScene(
     when (val rs = state.value.appState) {
         is AppState.CurrentTool -> {
             CurrentToolScreen(
+                tool = rs.tool,
                 onClick = {
                     onEvent(MainEvent.PlaySound(rs.tool.sound))
                 },
