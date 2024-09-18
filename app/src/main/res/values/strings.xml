@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">Andrei_07</string>
+    <string name="app_name">Sound tool</string>
+
+    <string name="power_tool_sound">Power Tools Sound</string>
+    <string name="start_app">Start App</string>
+    <string name="start_stop">Start/Stop</string>
+
+    <string name="chain_saw">Chain saw</string>
+    <string name="petrol_grinder">Petrol grinder</string>
+    <string name="pneumatic_jackhammer">Pneumatic jackhammer</string>
+    <string name="power_jig_saw">Power jig saw</string>
+    <string name="power_drill">Power drill</string>
+    <string name="pneumatic_drill">Pneumatic drill</string>
+    <string name="handsaw">Handsaw</string>
+    <string name="file">File</string>
+    <string name="cordless_drill">Cordless drill</string>
+    <string name="power_plane">Power plane</string>
+    <string name="angle_grinder">Angle grinder</string>
+    <string name="jackhammer">Jackhammer</string>
+    <string name="circular_saw">Circular saw</string>
+    <string name="puncher">Puncher</string>
+    <string name="hammer">Hammer</string>
+
 </resources>
