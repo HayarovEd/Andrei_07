@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sound tool</string>
+    <string name="app_name">benato</string>
 
     <string name="power_tool_sound">Power Tools Sound</string>
     <string name="start_app">Start App</string>
