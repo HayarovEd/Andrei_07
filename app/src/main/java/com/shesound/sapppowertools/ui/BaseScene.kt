@@ -41,7 +41,9 @@ fun BaseScene(
         }
 
         AppState.Web -> {
-
+            WebViewScreen (
+                onEvent = onEvent
+            )
         }
     }
 }
