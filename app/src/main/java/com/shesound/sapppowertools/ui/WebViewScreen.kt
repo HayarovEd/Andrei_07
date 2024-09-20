@@ -84,7 +84,7 @@ fun WebViewScreen(
                         override fun onPageFinished(view: WebView?, url: String?) {
                             super.onPageFinished(view, url)
                             val openedUrl = view?.url
-                                Log.d("TEST CONNECT", "onPageFinished $openedUrl")
+                            Log.d("TEST CONNECT", "onPageFinished $openedUrl")
                             if (openedUrl==null||openedUrl.contains(CHECKED_URL)) {
                                 onEvent(MainEvent.OnChangeAppState(AppState.Start))}
                         }
@@ -100,7 +100,7 @@ fun WebViewScreen(
                         override fun onLoadResource(view: WebView?, url: String?) {
                             super.onLoadResource(view, url)
                             Log.d("TEST CONNECT", "onLoadResource $url")
-
+                            //onEvent(MainEvent.OnChangeAppState(AppState.Loading))
                         }
 
                         override fun onReceivedError(

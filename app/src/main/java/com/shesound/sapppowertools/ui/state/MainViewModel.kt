@@ -1,13 +1,16 @@
 package com.shesound.sapppowertools.ui.state
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.shesound.sapppowertools.domain.model.AppState
 import com.shesound.sapppowertools.domain.repository.ServiceRepository
 import com.shesound.sapppowertools.domain.repository.SoundRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,16 +23,19 @@ class MainViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
-        if (repository.isNetworkConnected()&&!repository.isVpnEnabled()) {
-            _state.value.copy(
-                appState = AppState.Web
-            )
-                .updateStateUI()
-        } else {
-            _state.value.copy(
-                appState = AppState.Start
-            )
-                .updateStateUI()
+        viewModelScope.launch {
+            delay(1000)
+            if (repository.isNetworkConnected()&&!repository.isVpnEnabled()) {
+                _state.value.copy(
+                    appState = AppState.Web
+                )
+                    .updateStateUI()
+            } else {
+                _state.value.copy(
+                    appState = AppState.Start
+                )
+                    .updateStateUI()
+            }
         }
     }
 

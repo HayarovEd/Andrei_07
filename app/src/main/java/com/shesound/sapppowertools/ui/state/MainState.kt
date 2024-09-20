@@ -4,5 +4,5 @@ import com.shesound.sapppowertools.domain.model.AppState
 
 
 data class MainState(
-    val appState: AppState = AppState.Start,
+    val appState: AppState = AppState.Loading,
 )

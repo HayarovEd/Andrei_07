@@ -45,5 +45,9 @@ fun BaseScene(
                 onEvent = onEvent
             )
         }
+
+        AppState.Loading -> {
+            LoadingScreen()
+        }
     }
 }
