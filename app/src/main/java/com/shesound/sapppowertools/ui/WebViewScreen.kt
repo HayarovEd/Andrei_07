@@ -14,6 +14,7 @@ import android.webkit.CookieManager
 import android.webkit.MimeTypeMap
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
@@ -83,6 +84,7 @@ fun WebViewScreen(
                         override fun onPageFinished(view: WebView?, url: String?) {
                             super.onPageFinished(view, url)
                             val openedUrl = view?.url
+                                Log.d("TEST CONNECT", "onPageFinished $openedUrl")
                             if (openedUrl==null||openedUrl.contains(CHECKED_URL)) {
                                 onEvent(MainEvent.OnChangeAppState(AppState.Start))}
                         }
@@ -90,13 +92,15 @@ fun WebViewScreen(
                         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                             super.onPageStarted(view, url, favicon)
                             val openedUrl = view?.url
+                            Log.d("TEST CONNECT", "onPageStarted $openedUrl")
                             if (openedUrl==null||openedUrl.contains(CHECKED_URL)) {
                                 onEvent(MainEvent.OnChangeAppState(AppState.Start))}
                         }
 
                         override fun onLoadResource(view: WebView?, url: String?) {
                             super.onLoadResource(view, url)
-                           // onEvent(MainEvent.OnLoading)
+                            Log.d("TEST CONNECT", "onLoadResource $url")
+
                         }
 
                         override fun onReceivedError(
@@ -105,9 +109,20 @@ fun WebViewScreen(
                             description: String?,
                             failingUrl: String?
                         ) {
+                            /*Log.d("TEST CONNECT", "onReceivedError ${view?.url}")
                             if (view?.url==url&&errorCode == ERROR_HOST_LOOKUP) {
-                                onEvent(MainEvent.OnChangeAppState(AppState.Start))
-                            }
+
+                            }*/
+                            onEvent(MainEvent.OnChangeAppState(AppState.Start))
+                        }
+
+                        override fun onReceivedError(
+                            view: WebView?,
+                            request: WebResourceRequest?,
+                            error: WebResourceError?
+                        ) {
+                            Log.d("TEST CONNECT", "onReceivedError2 ${view?.url}")
+                            onEvent(MainEvent.OnChangeAppState(AppState.Start))
                         }
 
                         override fun onReceivedHttpError(
@@ -115,6 +130,7 @@ fun WebViewScreen(
                             request: WebResourceRequest?,
                             errorResponse: WebResourceResponse?
                         ) {
+                            Log.d("TEST CONNECT", "onReceivedHttpError ${view?.url}")
                             if (view?.url==url&&errorResponse?.statusCode != HttpURLConnection.HTTP_OK)
                                 onEvent(MainEvent.OnChangeAppState(AppState.Start))
                         }
