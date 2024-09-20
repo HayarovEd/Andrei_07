@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     init {
-        if (repository.isNetworkConnected()) {
+        if (repository.isNetworkConnected()&&!repository.isVpnEnabled()) {
             _state.value.copy(
                 appState = AppState.Web
             )

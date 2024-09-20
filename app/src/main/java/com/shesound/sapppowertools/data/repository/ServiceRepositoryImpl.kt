@@ -18,4 +18,11 @@ class ServiceRepositoryImpl @Inject constructor(
 
         return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
+
+    override fun isVpnEnabled(): Boolean {
+        val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+        return networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+    }
 }
