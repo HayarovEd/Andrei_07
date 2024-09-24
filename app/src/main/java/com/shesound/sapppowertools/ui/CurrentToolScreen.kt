@@ -87,7 +87,7 @@ fun CurrentToolScreen(
             modifier = modifier
                 .align(alignment = Alignment.TopCenter)
                 .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp, top = 35.dp, bottom = 50.dp)
+                .padding(start = 15.dp, end = 15.dp, top = 35.dp, bottom = 50.dp)
         ){
             Button(
                 modifier = modifier,

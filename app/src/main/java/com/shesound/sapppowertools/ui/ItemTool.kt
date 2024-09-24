@@ -45,7 +45,7 @@ fun ItemTool(
     val cellHeightDp = remember { mutableStateOf(0.dp) }
     Box (
         modifier = modifier
-            .clip(shape = RoundedCornerShape(15.dp))
+            .clip(shape = RoundedCornerShape(14.dp))
             .fillMaxWidth()
     ){
         Image(
@@ -64,7 +64,7 @@ fun ItemTool(
         Text(
             modifier = modifier
                 .align(alignment = Alignment.BottomStart)
-                .padding(start = 20.dp, bottom = 20.dp),
+                .padding(start = 18.dp, bottom = 18.dp),
             text = stringResource(tool.name),
             style = TextStyle(
                 fontSize = 25.sp,
@@ -79,7 +79,7 @@ fun ItemTool(
                 .width(cellWidthDp.value/3.2f)
                 .height(cellHeightDp.value/4.1f)
                 .padding(end = 10.dp, bottom = 10.dp),
-            shape = RoundedCornerShape(10.dp),
+            shape = RoundedCornerShape(5.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = red
             ),
