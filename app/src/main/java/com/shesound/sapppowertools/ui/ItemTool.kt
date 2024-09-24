@@ -45,7 +45,7 @@ fun ItemTool(
     val cellHeightDp = remember { mutableStateOf(0.dp) }
     Box (
         modifier = modifier
-            .clip(shape = RoundedCornerShape(20.dp))
+            .clip(shape = RoundedCornerShape(15.dp))
             .fillMaxWidth()
     ){
         Image(
