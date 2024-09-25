@@ -14,8 +14,8 @@ android {
         applicationId = "com.shesound.sapppowertools"
         minSdk = 26
         targetSdk = 34
-        versionCode = 4
-        versionName = "1.7"
+        versionCode = 8
+        versionName = "1.84"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

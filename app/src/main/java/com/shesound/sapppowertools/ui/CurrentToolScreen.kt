@@ -91,7 +91,7 @@ fun CurrentToolScreen(
         ){
             Button(
                 modifier = modifier,
-                shape = RoundedCornerShape(10.dp),
+                shape = RoundedCornerShape(15.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = red
                 ),
